@@ -41,7 +41,7 @@ public class MagicWar extends JavaPlugin {
 
 		Bukkit.getWorlds().get(0).setPVP(false);
 		Bukkit.getWorlds().get(0).setDifficulty(Difficulty.PEACEFUL);
-		Bukkit.getWorlds().get(0).setGameRuleValue("doDaylightCycle", "false");
+		//Bukkit.getWorlds().get(0).setGameRuleValue("doDaylightCycle", "false");
 	}
 
 	private void registerListeners() {

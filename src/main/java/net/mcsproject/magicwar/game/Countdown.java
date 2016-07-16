@@ -1,21 +1,23 @@
 package net.mcsproject.magicwar.game;
 
+import lombok.Getter;
 import net.mcsproject.magicwar.MagicWar;
 import org.bukkit.Bukkit;
 import org.bukkit.scheduler.BukkitTask;
 
 public abstract class Countdown {
 
-	private int timer;
+	@Getter
+	private int time;
 	private final BukkitTask task;
 
 	public Countdown(int startTime) {
-		this.timer = startTime;
+		this.time = startTime;
 
 		this.onStart();
 
 		this.task = Bukkit.getScheduler().runTaskTimer(MagicWar.getInstance(), () -> {
-			if (this.timer == 0) {
+			if (this.time == 0) {
 				Countdown.this.task.cancel();
 				int next = MagicWar.getInstance().getGamePhase().ordinal() + 1;
 				if (next == GamePhase.values().length - 1) {
@@ -28,7 +30,7 @@ public abstract class Countdown {
 
 			this.sendMessage();
 
-			timer--;
+			time--;
 		}, 0L, 20L);
 
 		this.onEnd();
