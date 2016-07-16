@@ -14,4 +14,6 @@ messages:
   gamestart: "&aLet the games begin!"
   peaceend: "&cWarmup ended now."
   deathmatchstart: "&aThe deathmatch begins now."
+  winner: "&c%p &7won the game"
 minplayers: 2
+worldbordersize: 130

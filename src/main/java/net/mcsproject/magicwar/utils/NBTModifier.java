@@ -45,7 +45,7 @@ public class NBTModifier {
 	private ItemStack getBukkitItemStack(Object nmsStack) {
 		Class<?> craftItemStack = this.getCraftItemStackClass();
 		try {
-			Method asBukkitCopy = craftItemStack.getMethod("asBukkitCopy", ItemStack.class);
+			Method asBukkitCopy = craftItemStack.getMethod("asBukkitCopy", nmsStack.getClass());
 			return (ItemStack) asBukkitCopy.invoke(craftItemStack, nmsStack);
 		} catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
 			e.printStackTrace();
@@ -107,10 +107,10 @@ public class NBTModifier {
 		return null;
 	}
 
-	public String getInteger(String key) {
+	public Integer getInteger(String key) {
 		try {
 			Method getObject = this.tagCompound.getClass().getMethod("getInteger", Integer.class);
-			return (String) getObject.invoke(this.tagCompound, key);
+			return (Integer) getObject.invoke(this.tagCompound, key);
 		} catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
 			e.printStackTrace();
 		}

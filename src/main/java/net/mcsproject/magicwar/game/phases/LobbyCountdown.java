@@ -1,5 +1,6 @@
 package net.mcsproject.magicwar.game.phases;
 
+import net.mcsproject.magicwar.MagicWar;
 import net.mcsproject.magicwar.game.Countdown;
 import net.mcsproject.magicwar.game.listener.ChatListener;
 import net.mcsproject.magicwar.game.listener.JoinLeaveListener;
@@ -30,10 +31,11 @@ public class LobbyCountdown extends Countdown {
 			wc.seed(); //TODO: Own generator
 			magicalWorld = Bukkit.createWorld(wc);
 			magicalWorld.setPVP(true);
-			magicalWorld.setDifficulty(Difficulty.NORMAL);
+			magicalWorld.setDifficulty(Difficulty.EASY);
 			magicalWorld.setTime(14000);
 			magicalWorld.setGameRuleValue("doDaylightCycle", "false");
 			magicalWorld.setAutoSave(false);
+			magicalWorld.getWorldBorder().setSize(MagicWar.getInstance().getConfig().getInt("worldboardersize"));
 		}
 		// TODO Messages @ilou
 	}
