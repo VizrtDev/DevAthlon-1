@@ -15,3 +15,9 @@ Lobby: 60 Sek
 Ingame: 12 Min
 Deathmatch: 2 Min
 Restarting/Endgame: 15 Sek
+
+Startequip:
+Armor: volle Leder
+Holz x10
+Kessel
+Wooden Sword

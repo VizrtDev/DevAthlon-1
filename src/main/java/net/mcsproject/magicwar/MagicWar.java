@@ -17,7 +17,7 @@ public class MagicWar extends JavaPlugin {
 	private MongoDB mongodb;
 
 	@Getter
-	private MongoDatabase database;
+	private MongoDatabase db;
 
 	@Getter
 	private static MagicWar instance;
@@ -29,10 +29,12 @@ public class MagicWar extends JavaPlugin {
 	public void onEnable() {
 		instance = this;
 
+		getConfig().options().copyDefaults(true);
+
 		mongodb = new MongoDB("127.0.0.1", 27017, "test");
 		mongodb.connect();
 
-		database = mongodb.getDatabase();
+		db = mongodb.getDatabase();
 
 		registerListeners();
 		registerCommands();

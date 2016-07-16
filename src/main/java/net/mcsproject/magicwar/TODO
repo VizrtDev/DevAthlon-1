@@ -1,12 +1,12 @@
 Todo:
-[] DB
-[] Config
-[] Game Mechaniken
-|- [] Grundgerüst
-|- [] Kessel
-|- [] Zauberstäbe
-|- [] Zauber (onetime usage)
-|- [] Animationen
-|- [] Messages
-[] World generator
-[] Stats/Achievements(?)
+[X] DB
+[*] Config
+[ ] Game Mechaniken
+|- [X] Grundgerüst
+|- [ ] Kessel
+|- [ ] Zauberstäbe
+|- [ ] Zauber (onetime usage)
+|- [ ] Animationen
+|- [*] Messages
+[ ] World generator
+[ ] Stats/Achievements(?)

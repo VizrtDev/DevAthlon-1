@@ -1,0 +1,12 @@
+db:
+  host: "127.0.0.1"
+  port: 27017
+  username: "magic"
+  password: "isintheair"
+messages:
+  chatformat: "%p => %m"
+  prefix: "[MagicWars]"
+  playerjoin: "%p joined the game"
+  playerquit: "%p left the game"
+  gamestart: "Game starts in %t Seconds"
+  deathmatchstart: "Deathmatch begins in %t Seconds"

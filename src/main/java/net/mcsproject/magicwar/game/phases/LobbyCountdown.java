@@ -15,7 +15,6 @@ public class LobbyCountdown extends Countdown {
 
 	@Override
 	public void onStart() {
-
 	}
 
 	@Override
