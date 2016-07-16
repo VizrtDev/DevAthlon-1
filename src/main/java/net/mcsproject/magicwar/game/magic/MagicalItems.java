@@ -1,16 +1,16 @@
 package net.mcsproject.magicwar.game.magic;
 
+import lombok.Getter;
 import net.mcsproject.magicwar.MagicWar;
-import net.mcsproject.magicwar.game.magic.items.AbsorptionPowder;
-import net.mcsproject.magicwar.game.magic.items.HealingPoint;
-import net.mcsproject.magicwar.game.magic.items.WitchsHead;
+import net.mcsproject.magicwar.game.magic.items.*;
 import org.bukkit.Bukkit;
 
 import java.util.HashMap;
 
 public class MagicalItems {
 
-	private HashMap<Integer, MagicalItem> map = new HashMap<>();
+	@Getter
+	private HashMap<Integer, MagicalItem> itemMap = new HashMap<>();
 
 	private static MagicalItems instance;
 
@@ -24,16 +24,19 @@ public class MagicalItems {
 	private MagicalItems() {
 		this.addItem(25, new HealingPoint());
 		this.addItem(50, new AbsorptionPowder());
+		this.addItem(55, new SpeedPowder());
+		this.addItem(60, new RegenerationPowder());
+		this.addItem(65, new LightningEgg());
 		this.addItem(75, new WitchsHead());
 	}
 
-	public void addItem(int value, MagicalItem item) {
-		this.map.put(value, item);
+	private void addItem(int value, MagicalItem item) {
+		this.itemMap.put(value, item);
 		Bukkit.getPluginManager().registerEvents(item, MagicWar.getInstance());
 	}
 
 	public MagicalItem getByValue(int value) {
-		return this.map.get(value);
+		return this.itemMap.get(value);
 	}
 
 }

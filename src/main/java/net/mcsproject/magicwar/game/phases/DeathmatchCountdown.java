@@ -23,6 +23,7 @@ public class DeathmatchCountdown extends Countdown {
 	@Override
 	public void onStart() {
 		Bukkit.broadcastMessage(ChatUtils.fromConfig("deathmatchstart"));
+		Bukkit.getOnlinePlayers().forEach(p -> p.teleport(p.getWorld().getSpawnLocation()));
 	}
 
 	@Override

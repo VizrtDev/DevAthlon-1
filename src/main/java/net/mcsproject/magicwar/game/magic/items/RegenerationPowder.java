@@ -13,11 +13,11 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-public class AbsorptionPowder extends MagicalItem {
+public class RegenerationPowder extends MagicalItem {
 
-	public AbsorptionPowder() {
-		super(new NBTModifier(new ItemModifier(new ItemStack(Material.INK_SACK, 1, (short) DyeColor.YELLOW.getDyeData()))
-				.name("§eAbsorption-Powder").lore("Wert§7: §e50").get()).setInteger("item-id", 1).modify());
+	public RegenerationPowder() {
+		super(new NBTModifier(new ItemModifier(new ItemStack(Material.INK_SACK, 1, (short) DyeColor.RED.getDyeData()))
+				.name("§cRegeneration-Powder").lore("Wert§7: §e60").get()).setInteger("item-id", 3).modify());
 	}
 
 	@EventHandler
@@ -26,13 +26,17 @@ public class AbsorptionPowder extends MagicalItem {
 			return;
 
 		Integer i = new NBTModifier(e.getItem()).getInteger("item-id");
-		if (i == null || i != 1) {
+		if (i == null || i != 3) {
 			return;
 		}
 
 		e.getPlayer().playSound(e.getPlayer().getLocation(), Sound.ENTITY_ARROW_HIT_PLAYER, 10, 1);
-		e.getPlayer().getItemOnCursor().setAmount(e.getPlayer().getItemOnCursor().getAmount() - 1);
-		e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, 1200, 1));
+		if (e.getPlayer().getItemOnCursor().getAmount() > 1) {
+			e.getPlayer().getItemOnCursor().setAmount(e.getPlayer().getItemOnCursor().getAmount() - 1);
+		} else {
+			e.getPlayer().setItemOnCursor(null);
+		}
+		e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 120, 1));
 	}
 
 }

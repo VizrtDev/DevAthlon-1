@@ -26,10 +26,15 @@ public class MongoDB {
 	@Getter
 	private ExecutorService exec = Executors.newCachedThreadPool();
 
+	@Getter
+	private DatabaseConnection connection;
+
 	public MongoDB(String host, int port, String dbName) {
 		this.host = host;
 		this.port = port;
 		this.dbName = dbName;
+
+		this.connection = new DatabaseConnection(this);
 	}
 
 	public MongoDB(String host, int port, String dbName, String username, String password) {

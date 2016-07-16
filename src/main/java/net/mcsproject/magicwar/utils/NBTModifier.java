@@ -109,7 +109,7 @@ public class NBTModifier {
 
 	public Integer getInteger(String key) {
 		try {
-			Method getObject = this.tagCompound.getClass().getMethod("getInt", int.class);
+			Method getObject = this.tagCompound.getClass().getMethod("getInt", String.class);
 			return (Integer) getObject.invoke(this.tagCompound, key);
 		} catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
 			e.printStackTrace();
@@ -129,7 +129,7 @@ public class NBTModifier {
 
 	public Double getDouble(String key) {
 		try {
-			Method getObject = this.tagCompound.getClass().getMethod("getDouble", double.class);
+			Method getObject = this.tagCompound.getClass().getMethod("getDouble", String.class);
 			return (Double) getObject.invoke(this.tagCompound, key);
 		} catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
 			e.printStackTrace();
@@ -149,7 +149,7 @@ public class NBTModifier {
 
 	public Boolean getBoolean(String key) {
 		try {
-			Method getObject = this.tagCompound.getClass().getMethod("getBoolean", boolean.class);
+			Method getObject = this.tagCompound.getClass().getMethod("getBoolean", String.class);
 			return (Boolean) getObject.invoke(this.tagCompound, key);
 		} catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
 			e.printStackTrace();
@@ -169,7 +169,7 @@ public class NBTModifier {
 
 	public Byte getByte(String key) {
 		try {
-			Method getObject = this.tagCompound.getClass().getMethod("getByte", byte.class);
+			Method getObject = this.tagCompound.getClass().getMethod("getByte", String.class);
 			return (Byte) getObject.invoke(this.tagCompound, key);
 		} catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
 			e.printStackTrace();
@@ -189,7 +189,7 @@ public class NBTModifier {
 
 	public Float getFloat(String key) {
 		try {
-			Method getObject = this.tagCompound.getClass().getMethod("getFloat", float.class);
+			Method getObject = this.tagCompound.getClass().getMethod("getFloat", String.class);
 			return (Float) getObject.invoke(this.tagCompound, key);
 		} catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
 			e.printStackTrace();
@@ -209,7 +209,7 @@ public class NBTModifier {
 
 	public Long getLong(String key) {
 		try {
-			Method getObject = this.tagCompound.getClass().getMethod("getLong", long.class);
+			Method getObject = this.tagCompound.getClass().getMethod("getLong", String.class);
 			return (Long) getObject.invoke(this.tagCompound, key);
 		} catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
 			e.printStackTrace();
@@ -229,7 +229,7 @@ public class NBTModifier {
 
 	public Short getShort(String key) {
 		try {
-			Method getObject = this.tagCompound.getClass().getMethod("getShort", short.class);
+			Method getObject = this.tagCompound.getClass().getMethod("getShort", String.class);
 			return (Short) getObject.invoke(this.tagCompound, key);
 		} catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
 			e.printStackTrace();

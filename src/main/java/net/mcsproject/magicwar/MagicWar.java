@@ -1,6 +1,5 @@
 package net.mcsproject.magicwar;
 
-import com.mongodb.client.MongoDatabase;
 import lombok.Getter;
 import net.mcsproject.magicwar.db.MongoDB;
 import net.mcsproject.magicwar.game.GamePhase;
@@ -15,10 +14,8 @@ import org.bukkit.Difficulty;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class MagicWar extends JavaPlugin {
-	private MongoDB mongodb;
-
 	@Getter
-	private MongoDatabase db;
+	private MongoDB mongodb;
 
 	@Getter
 	private static MagicWar instance;
@@ -40,8 +37,6 @@ public class MagicWar extends JavaPlugin {
 
 		mongodb = new MongoDB("127.0.0.1", 27017, "test");
 		mongodb.connect();
-
-		db = mongodb.getDatabase();
 
 		registerCommands();
 		registerListener();

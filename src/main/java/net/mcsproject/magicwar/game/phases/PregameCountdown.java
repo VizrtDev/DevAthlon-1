@@ -5,6 +5,8 @@ import net.mcsproject.magicwar.game.listener.lobby.BlockBreakListener;
 import net.mcsproject.magicwar.game.listener.lobby.EntityDamageListener;
 import net.mcsproject.magicwar.game.listener.lobby.ItemDropListener;
 import net.mcsproject.magicwar.game.listener.pregame.PlayerMoveListener;
+import net.mcsproject.magicwar.game.magic.MagicalItems;
+import net.mcsproject.magicwar.game.magic.items.MagicBook;
 import net.mcsproject.magicwar.utils.ChatUtils;
 import net.mcsproject.magicwar.utils.ItemModifier;
 import net.mcsproject.magicwar.utils.ListenerBundle;
@@ -34,10 +36,13 @@ public class PregameCountdown extends Countdown {
 
 	@Override
 	public void onStart() {
+		MagicBook book = new MagicBook(MagicalItems.getInstance().getItemMap());
+
 		Bukkit.broadcastMessage(ChatUtils.fromConfig("gamestart"));
 		Bukkit.getOnlinePlayers().forEach(p -> {
 			PlayerInventory inv = p.getInventory();
 			inv.setItem(0, new ItemStack(Material.WOOD_SWORD));
+			inv.setItem(7, book.getItem());
 			inv.setItem(8, new ItemModifier(new ItemStack(Material.CAULDRON_ITEM)).name("Zauberkessel").get());
 			inv.setItem(2, new ItemStack(Material.WOOD, 20));
 			inv.setItem(1, new ItemStack(Material.IRON_PICKAXE));

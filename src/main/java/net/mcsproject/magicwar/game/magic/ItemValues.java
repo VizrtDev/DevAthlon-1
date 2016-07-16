@@ -5,8 +5,8 @@ import lombok.Getter;
 // TODO Set values @ilou
 public enum ItemValues {
 	STONE(5),
-	GRASS(20),
-	DIRT(2),
+	GRASS(5),
+	DIRT(5),
 	COBBLESTONE(2),
 	WOOD(4),
 	SAPLING(4),
