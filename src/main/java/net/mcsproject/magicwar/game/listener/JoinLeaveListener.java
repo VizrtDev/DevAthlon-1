@@ -21,6 +21,8 @@ public class JoinLeaveListener implements Listener {
 		e.getPlayer().setFoodLevel(20);
 		e.getPlayer().setTotalExperience(0);
 
+		e.getPlayer().teleport(Bukkit.getWorlds().get(0).getSpawnLocation());
+
 		if (MagicWar.getInstance().getGamePhase() == GamePhase.LOBBY && !MagicWar.getInstance().getGamePhase().getCountdown().isStarted()
 				&& Bukkit.getOnlinePlayers().size() > 1) {
 			MagicWar.getInstance().getGamePhase().getCountdown().start();

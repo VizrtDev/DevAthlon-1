@@ -1,12 +1,12 @@
 Todo:
 [X] DB
-[*] Config
+[X] Config
 [*] Game Mechaniken
 |- [X] Grundgerüst
 |- [X] Kessel
 |- [ ] Zauberbuch (mit Itemwerten)
-|- [ ] ZauberItems & Zauberstäbe
-|- [ ] Animationen
+|- [*] ZauberItems & Zauberstäbe
+|- [*] Animationen
 |- [*] Messages
 [ ] World generator
 [ ] Stats/Achievements(?)

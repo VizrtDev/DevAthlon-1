@@ -35,7 +35,7 @@ public class LobbyCountdown extends Countdown {
 			magicalWorld.setTime(14000);
 			magicalWorld.setGameRuleValue("doDaylightCycle", "false");
 			magicalWorld.setAutoSave(false);
-			magicalWorld.getWorldBorder().setSize(MagicWar.getInstance().getConfig().getInt("worldboardersize"));
+			magicalWorld.getWorldBorder().setSize(MagicWar.getInstance().getConfig().getInt("worldbordersize"));
 		}
 		// TODO Messages @ilou
 	}
