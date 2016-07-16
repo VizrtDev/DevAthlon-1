@@ -1,5 +1,5 @@
 name: MagicWar
-main: net.mcsproject.magicwar.magicWar
+main: net.mcsproject.magicwar.MagicWar
 version: 0.1
 authors: ['CreepPlays', 'ilouHD', 'LucaDev']
 

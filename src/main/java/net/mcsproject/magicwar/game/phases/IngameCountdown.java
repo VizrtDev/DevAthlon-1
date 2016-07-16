@@ -20,6 +20,11 @@ public class IngameCountdown extends Countdown {
 	}
 
 	@Override
+	public void onInit() {
+
+	}
+
+	@Override
 	public void onStart() {
 		Bukkit.getPluginManager().registerEvents(new PlayerDeathListener(), MagicWar.getInstance());
 		Bukkit.getPluginManager().registerEvents(new InteractListener(), MagicWar.getInstance());

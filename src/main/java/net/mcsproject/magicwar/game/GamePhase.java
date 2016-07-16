@@ -11,17 +11,21 @@ public enum GamePhase {
 	DEATHMATCH(DeathmatchCountdown.class),
 	RESTARTING(RestartingCountdown.class);
 
+	private Class<? extends Countdown> countdownClass;
 	private Countdown countdown;
 
 	GamePhase(Class<? extends Countdown> countdown) {
-		try {
-			this.countdown = countdown.getConstructor().newInstance();
-		} catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
-			e.printStackTrace();
-		}
+		this.countdownClass = countdown;
 	}
 
 	public Countdown getCountdown() {
+		if (this.countdown == null) {
+			try {
+				this.countdown = countdownClass.getConstructor().newInstance();
+			} catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
+				e.printStackTrace();
+			}
+		}
 		return this.countdown;
 	}
 

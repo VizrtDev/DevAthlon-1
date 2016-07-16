@@ -9,22 +9,28 @@ public abstract class Countdown {
 
 	@Getter
 	private int time;
-	private final BukkitTask task;
+	private BukkitTask task;
 
 	public Countdown(int startTime) {
 		this.time = startTime;
+		this.onInit();
+	}
 
+	public void start() {
 		this.onStart();
 
 		this.task = Bukkit.getScheduler().runTaskTimer(MagicWar.getInstance(), () -> {
 			if (this.time == 0) {
 				Countdown.this.task.cancel();
+				this.onEnd();
 				int next = MagicWar.getInstance().getGamePhase().ordinal() + 1;
 				if (next == GamePhase.values().length - 1) {
 					Bukkit.getServer().shutdown();
 					return;
 				}
-				MagicWar.getInstance().setGamePhase(GamePhase.fromOrdinal(next));
+				GamePhase phase = GamePhase.fromOrdinal(next);
+				MagicWar.getInstance().setGamePhase(phase);
+				phase.getCountdown().start();
 				return;
 			}
 
@@ -32,11 +38,11 @@ public abstract class Countdown {
 
 			time--;
 		}, 0L, 20L);
-
-		this.onEnd();
 	}
 
 	public abstract void sendMessage();
+
+	public abstract void onInit();
 
 	public abstract void onStart();
 

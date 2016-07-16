@@ -1,9 +1,6 @@
 package net.mcsproject.magicwar.game.phases;
 
-import net.mcsproject.magicwar.MagicWar;
 import net.mcsproject.magicwar.game.Countdown;
-import net.mcsproject.magicwar.game.listener.lobby.EntityDamageListener;
-import net.mcsproject.magicwar.game.listener.lobby.WeatherChangeListener;
 import org.bukkit.Bukkit;
 import org.bukkit.Difficulty;
 import org.bukkit.World;
@@ -21,10 +18,12 @@ public class PregameCountdown extends Countdown {
 	}
 
 	@Override
-	public void onStart() {
-		Bukkit.getPluginManager().registerEvents(new EntityDamageListener(), MagicWar.getInstance());
-		Bukkit.getPluginManager().registerEvents(new WeatherChangeListener(), MagicWar.getInstance());
+	public void onInit() {
 
+	}
+
+	@Override
+	public void onStart() {
 		WorldCreator wc = new WorldCreator("MagicalWorld");
 		wc.environment(World.Environment.NORMAL);
 		wc.generateStructures(false);
@@ -33,6 +32,7 @@ public class PregameCountdown extends Countdown {
 		magicalworld.setPVP(true);
 		magicalworld.setDifficulty(Difficulty.NORMAL);
 		magicalworld.setTime(14000);
+		magicalworld.setGameRuleValue("doDaylightCycle", "false");
 	}
 
 	@Override

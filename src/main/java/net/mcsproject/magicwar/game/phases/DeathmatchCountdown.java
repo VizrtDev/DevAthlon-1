@@ -14,6 +14,11 @@ public class DeathmatchCountdown extends Countdown {
 	}
 
 	@Override
+	public void onInit() {
+
+	}
+
+	@Override
 	public void onStart() {
 
 	}
