@@ -1,0 +1,12 @@
+name: MagicWar
+main: net.mcsproject.magicwar.magicWar
+version: 0.1
+authors: ['CreepPlays', 'ilouHD', 'LucaDev']
+
+commands:
+  stats:
+    description: Shows the stats of the given player or themselves.
+    usage: /stats [Player]
+  forcestart:
+    description: Forces the gamestart
+    usage: /forcestart
