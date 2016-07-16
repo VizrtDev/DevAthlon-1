@@ -9,6 +9,7 @@ import lombok.Getter;
 import java.util.Collections;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class MongoDB {
 
@@ -46,6 +47,15 @@ public class MongoDB {
 			}
 			this.database = this.client.getDatabase(this.dbName);
 		});
+	}
+
+	public void disconnect() {
+		try {
+			this.exec.awaitTermination(5, TimeUnit.SECONDS);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		this.client.close();
 	}
 
 }

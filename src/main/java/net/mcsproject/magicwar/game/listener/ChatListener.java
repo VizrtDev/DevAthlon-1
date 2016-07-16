@@ -8,7 +8,7 @@ import org.bukkit.event.player.PlayerChatTabCompleteEvent;
 public class ChatListener implements Listener {
 	@EventHandler
 	public void onChat(AsyncPlayerChatEvent e) {
-
+		e.setFormat(""); //TODO: Waiting for Ilou
 	}
 
 	@EventHandler
