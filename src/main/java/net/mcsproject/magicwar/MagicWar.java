@@ -2,7 +2,6 @@ package net.mcsproject.magicwar;
 
 import com.mongodb.client.MongoDatabase;
 import lombok.Getter;
-import lombok.Setter;
 import net.mcsproject.magicwar.db.MongoDB;
 import net.mcsproject.magicwar.game.GamePhase;
 import net.mcsproject.magicwar.game.commands.ForceStartCommand;
@@ -23,8 +22,12 @@ public class MagicWar extends JavaPlugin {
 	private static MagicWar instance;
 
 	@Getter
-	@Setter
 	private GamePhase gamePhase;
+
+	public void setGamePhase(GamePhase gamePhase) {
+		this.gamePhase = gamePhase;
+		this.gamePhase.getCountdown();
+	}
 
 	public void onEnable() {
 		instance = this;
@@ -41,8 +44,7 @@ public class MagicWar extends JavaPlugin {
 		registerCommands();
 		registerListener();
 
-		this.setGamePhase(GamePhase.INGAME);
-		this.getGamePhase().getCountdown(); // To call onInit()
+		this.setGamePhase(GamePhase.LOBBY);
 
 		Bukkit.getWorlds().get(0).setPVP(false);
 		Bukkit.getWorlds().get(0).setDifficulty(Difficulty.PEACEFUL);

@@ -1,11 +1,13 @@
 package net.mcsproject.magicwar.game.phases;
 
 import net.mcsproject.magicwar.game.Countdown;
+import net.mcsproject.magicwar.utils.ChatUtils;
+import org.bukkit.Bukkit;
 
 public class DeathmatchCountdown extends Countdown {
 
 	public DeathmatchCountdown() {
-		super(120);
+		super(120, false);
 	}
 
 	@Override
@@ -20,7 +22,7 @@ public class DeathmatchCountdown extends Countdown {
 
 	@Override
 	public void onStart() {
-
+		Bukkit.broadcastMessage(ChatUtils.fromConfig("deathmatchstart"));
 	}
 
 	@Override

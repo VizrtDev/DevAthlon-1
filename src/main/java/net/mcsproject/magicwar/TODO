@@ -5,8 +5,7 @@ Todo:
 |- [X] Grundgerüst
 |- [X] Kessel
 |- [ ] Zauberbuch (mit Itemwerten)
-|- [ ] Zauberstäbe
-|- [ ] Zauber (onetime usage)
+|- [ ] ZauberItems & Zauberstäbe
 |- [ ] Animationen
 |- [*] Messages
 [ ] World generator

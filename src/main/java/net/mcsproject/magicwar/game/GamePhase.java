@@ -7,6 +7,7 @@ import java.lang.reflect.InvocationTargetException;
 public enum GamePhase {
 	LOBBY(LobbyCountdown.class),
 	PREGAME(PregameCountdown.class),
+	WARMUP(WarmupCountdown.class),
 	INGAME(IngameCountdown.class),
 	DEATHMATCH(DeathmatchCountdown.class),
 	RESTARTING(RestartingCountdown.class);

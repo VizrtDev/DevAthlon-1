@@ -1,34 +1,54 @@
 package net.mcsproject.magicwar.game.phases;
 
-import net.mcsproject.magicwar.MagicWar;
 import net.mcsproject.magicwar.game.Countdown;
 import net.mcsproject.magicwar.game.listener.ChatListener;
 import net.mcsproject.magicwar.game.listener.JoinLeaveListener;
 import net.mcsproject.magicwar.game.listener.lobby.BlockBreakListener;
 import net.mcsproject.magicwar.game.listener.lobby.EntityDamageListener;
 import net.mcsproject.magicwar.game.listener.lobby.WeatherChangeListener;
+import net.mcsproject.magicwar.utils.ListenerBundle;
 import org.bukkit.Bukkit;
-import org.bukkit.event.HandlerList;
+import org.bukkit.Difficulty;
+import org.bukkit.World;
+import org.bukkit.WorldCreator;
 
 public class LobbyCountdown extends Countdown {
 
+	private ListenerBundle bundle;
+	private World magicalWorld;
+
 	public LobbyCountdown() {
-		super(60);
+		super(60, true);
 	}
 
 	@Override
 	public void sendMessage() {
+		if (this.getTime() == 15) {
+			WorldCreator wc = new WorldCreator("MagicalWorld");
+			wc.environment(World.Environment.NORMAL);
+			wc.generateStructures(false);
+			wc.seed(); //TODO: Own generator
+			magicalWorld = Bukkit.createWorld(wc);
+			magicalWorld.setPVP(true);
+			magicalWorld.setDifficulty(Difficulty.NORMAL);
+			magicalWorld.setTime(14000);
+			magicalWorld.setGameRuleValue("doDaylightCycle", "false");
+			magicalWorld.setAutoSave(false);
+		}
 		// TODO Messages @ilou
 	}
 
 	@Override
 	public void onInit() {
-		Bukkit.getPluginManager().registerEvents(new JoinLeaveListener(), MagicWar.getInstance());
-		Bukkit.getPluginManager().registerEvents(new ChatListener(), MagicWar.getInstance());
+		this.bundle = new ListenerBundle(
+				new JoinLeaveListener(),
+				new ChatListener(),
+				new BlockBreakListener(),
+				new EntityDamageListener(),
+				new WeatherChangeListener()
+		);
 
-		Bukkit.getPluginManager().registerEvents(new BlockBreakListener(), MagicWar.getInstance());
-		Bukkit.getPluginManager().registerEvents(new EntityDamageListener(), MagicWar.getInstance());
-		Bukkit.getPluginManager().registerEvents(new WeatherChangeListener(), MagicWar.getInstance());
+		this.bundle.register();
 	}
 
 	@Override
@@ -37,7 +57,8 @@ public class LobbyCountdown extends Countdown {
 
 	@Override
 	public void onEnd() {
-		HandlerList.unregisterAll();
+		Bukkit.getOnlinePlayers().forEach(p -> p.teleport(magicalWorld.getSpawnLocation()));
+		this.bundle.unregister();
 	}
 
 

@@ -5,25 +5,26 @@ import net.mcsproject.magicwar.game.listener.ingame.BlockBreakListener;
 import net.mcsproject.magicwar.game.listener.ingame.InteractListener;
 import net.mcsproject.magicwar.game.listener.ingame.ItemDropListener;
 import net.mcsproject.magicwar.game.listener.ingame.PlayerDeathListener;
+import net.mcsproject.magicwar.utils.ChatUtils;
 import net.mcsproject.magicwar.utils.ListenerBundle;
+import org.bukkit.Bukkit;
 
-public class IngameCountdown extends Countdown {
+public class WarmupCountdown extends Countdown {
 
 	private ListenerBundle bundle;
 
-	public IngameCountdown() {
-		super(720, false);
+	public WarmupCountdown() {
+		super(300, false);
 	}
 
 	@Override
 	public void sendMessage() {
-		// TODO Messages @ilou
+
 	}
 
 	@Override
 	public void onInit() {
-		this.bundle = new ListenerBundle(new BlockBreakListener(), new InteractListener(),
-				new ItemDropListener(), new PlayerDeathListener());
+		this.bundle = new ListenerBundle(new PlayerDeathListener(), new InteractListener(), new ItemDropListener(), new BlockBreakListener());
 		this.bundle.register();
 	}
 
@@ -35,6 +36,7 @@ public class IngameCountdown extends Countdown {
 	@Override
 	public void onEnd() {
 		this.bundle.unregister();
+		Bukkit.broadcastMessage(ChatUtils.fromConfig("peaceend"));
 	}
 
 }

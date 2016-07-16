@@ -10,3 +10,8 @@ messages:
   playerquit: "%p left the game"
   gamestart: "Game starts in %t Seconds"
   deathmatchstart: "Deathmatch begins in %t Seconds"
+  playerdeath: "%p was killed by %k"
+  gamestart: "Let the games begin!"
+  peaceend: "Warumup ended now."
+  deathmatchstart: "The Deathmatch begins now."
+minplayers: 4

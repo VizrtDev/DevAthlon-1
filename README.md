@@ -12,6 +12,8 @@ Desweiteren gibt es Zauberstäbe, diese brauchen bei Benutzung Mana (Actionbar)
 
 
 Lobby: 60 Sek
+Pregame: 10 Sec
+Peace: 5 Min
 Ingame: 12 Min
 Deathmatch: 2 Min
 Restarting/Endgame: 15 Sek
@@ -25,5 +27,5 @@ Wooden Sword
 
 Itemwertbreechnung:
 max insg: 99
-max 3 items
-also 25 max wert pro item
+max 3 items in cauldron
+also 33 max Wert pro item

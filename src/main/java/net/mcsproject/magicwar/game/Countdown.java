@@ -9,18 +9,26 @@ public abstract class Countdown {
 
 	@Getter
 	private int time;
+	private int startTime;
 	private BukkitTask task;
 
-	public Countdown(int startTime) {
+	@Getter
+	private boolean started = false;
+	private boolean enableXP = true;
+
+	public Countdown(int startTime, boolean xp) {
 		this.time = startTime;
+		this.startTime = startTime;
+		this.enableXP = xp;
 		this.onInit();
 	}
 
 	public void start() {
 		this.onStart();
+		this.started = true;
 
 		this.task = Bukkit.getScheduler().runTaskTimer(MagicWar.getInstance(), () -> {
-			if (this.time == 0) {
+			if (this.time == -1) {
 				Countdown.this.task.cancel();
 				this.onEnd();
 				int next = MagicWar.getInstance().getGamePhase().ordinal() + 1;
@@ -32,6 +40,13 @@ public abstract class Countdown {
 				MagicWar.getInstance().setGamePhase(phase);
 				phase.getCountdown().start();
 				return;
+			}
+
+			if (enableXP) {
+				Bukkit.getOnlinePlayers().forEach(p -> {
+					p.setLevel(time);
+					p.setExp((float) time / startTime);
+				});
 			}
 
 			this.sendMessage();
