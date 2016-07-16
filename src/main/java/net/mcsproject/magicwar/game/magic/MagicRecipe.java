@@ -4,13 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.HashMap;
-
 @AllArgsConstructor
 public class MagicRecipe {
 
 	@Getter
-	private HashMap<ItemStack, Integer> ingredients = new HashMap<>();
+	private int requiredValue;
 
 	@Getter
 	private ItemStack result;

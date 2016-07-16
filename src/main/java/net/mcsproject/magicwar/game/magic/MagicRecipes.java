@@ -1,9 +1,6 @@
 package net.mcsproject.magicwar.game.magic;
 
-import org.bukkit.inventory.ItemStack;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class MagicRecipes {
@@ -23,10 +20,6 @@ public class MagicRecipes {
 
 	public void addRecipe(MagicRecipe recipe) {
 		this.recipes.add(recipe);
-	}
-
-	public MagicRecipe getRecipeWithIngredients(HashMap<ItemStack, Integer> items) {
-		return this.recipes.stream().filter(r -> r.getIngredients().equals(items)).findFirst().orElse(null);
 	}
 
 }

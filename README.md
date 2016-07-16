@@ -21,3 +21,9 @@ Armor: volle Leder
 Holz x10
 Kessel
 Wooden Sword
+
+
+Itemwertbreechnung:
+max insg: 99
+max 3 items
+also 25 max wert pro item
