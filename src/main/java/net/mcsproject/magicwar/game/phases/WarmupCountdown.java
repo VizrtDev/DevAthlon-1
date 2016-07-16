@@ -5,6 +5,7 @@ import net.mcsproject.magicwar.game.listener.ingame.BlockBreakListener;
 import net.mcsproject.magicwar.game.listener.ingame.InteractListener;
 import net.mcsproject.magicwar.game.listener.ingame.ItemDropListener;
 import net.mcsproject.magicwar.game.listener.ingame.PlayerDeathListener;
+import net.mcsproject.magicwar.game.listener.lobby.EntityDamageListener;
 import net.mcsproject.magicwar.utils.ChatUtils;
 import net.mcsproject.magicwar.utils.ListenerBundle;
 import org.bukkit.Bukkit;
@@ -24,7 +25,7 @@ public class WarmupCountdown extends Countdown {
 
 	@Override
 	public void onInit() {
-		this.bundle = new ListenerBundle(new PlayerDeathListener(), new InteractListener(), new ItemDropListener(), new BlockBreakListener());
+		this.bundle = new ListenerBundle(new PlayerDeathListener(), new InteractListener(), new EntityDamageListener(), new ItemDropListener(), new BlockBreakListener());
 		this.bundle.register();
 	}
 

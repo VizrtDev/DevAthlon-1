@@ -29,6 +29,10 @@ public abstract class Countdown {
 
 		this.task = Bukkit.getScheduler().runTaskTimer(MagicWar.getInstance(), () -> {
 			if (this.time == -1) {
+				Bukkit.getOnlinePlayers().forEach(p -> {
+					p.setLevel(0);
+					p.setExp((float) 0.000001);
+				});
 				Countdown.this.task.cancel();
 				this.onEnd();
 				int next = MagicWar.getInstance().getGamePhase().ordinal() + 1;
