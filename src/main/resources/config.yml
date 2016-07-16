@@ -4,8 +4,8 @@ db:
   username: "magic"
   password: "isintheair"
 messages:
-  chatformat: "%p => %m"
-  prefix: "[MagicWars]"
+  chatformat: "%s => %s"
+  prefix: "[MagicWars] "
   playerjoin: "%p joined the game"
   playerquit: "%p left the game"
   gamestart: "Game starts in %t Seconds"

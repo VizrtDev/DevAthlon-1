@@ -10,7 +10,7 @@ public enum ItemValues {
 	COBBLESTONE(2),
 	WOOD(4),
 	SAPLING(4),
-	BEDROCK(100),
+	BEDROCK(99),
 	SAND(6),
 	GRAVEL(12),
 	GOLD_ORE(15),

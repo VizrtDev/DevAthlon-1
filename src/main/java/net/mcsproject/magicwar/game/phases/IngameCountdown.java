@@ -2,7 +2,9 @@ package net.mcsproject.magicwar.game.phases;
 
 import net.mcsproject.magicwar.MagicWar;
 import net.mcsproject.magicwar.game.Countdown;
+import net.mcsproject.magicwar.game.listener.ingame.BlockBreakListener;
 import net.mcsproject.magicwar.game.listener.ingame.InteractListener;
+import net.mcsproject.magicwar.game.listener.ingame.ItemDropListener;
 import net.mcsproject.magicwar.game.listener.ingame.PlayerDeathListener;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -21,14 +23,14 @@ public class IngameCountdown extends Countdown {
 
 	@Override
 	public void onInit() {
-
+		Bukkit.getPluginManager().registerEvents(new PlayerDeathListener(), MagicWar.getInstance());
+		Bukkit.getPluginManager().registerEvents(new InteractListener(), MagicWar.getInstance());
+		Bukkit.getPluginManager().registerEvents(new ItemDropListener(), MagicWar.getInstance());
+		Bukkit.getPluginManager().registerEvents(new BlockBreakListener(), MagicWar.getInstance());
 	}
 
 	@Override
 	public void onStart() {
-		Bukkit.getPluginManager().registerEvents(new PlayerDeathListener(), MagicWar.getInstance());
-		Bukkit.getPluginManager().registerEvents(new InteractListener(), MagicWar.getInstance());
-
 		Bukkit.getOnlinePlayers().forEach(player -> {
 			player.getInventory().setItem(0, new ItemStack(Material.WOOD_SWORD));
 			player.getInventory().setItem(1, new ItemStack(Material.WOOD, 10));

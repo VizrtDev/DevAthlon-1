@@ -25,7 +25,7 @@ public class MagicCauldron {
 	}
 
 	public int getValue(Location location) {
-		return values.get(location);
+		return values.getOrDefault(location, (byte) 0);
 	}
 
 	public void removeCauldron(Location location) {

@@ -3,8 +3,8 @@ Todo:
 [*] Config
 [ ] Game Mechaniken
 |- [X] Grundgerüst
-|- [ ] Kessel
-|- [ ] Zauberbuch (mit Rezepten)
+|- [X] Kessel
+|- [ ] Zauberbuch (mit Itemwerten)
 |- [ ] Zauberstäbe
 |- [ ] Zauber (onetime usage)
 |- [ ] Animationen

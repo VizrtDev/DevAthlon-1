@@ -7,7 +7,8 @@ import net.mcsproject.magicwar.db.MongoDB;
 import net.mcsproject.magicwar.game.GamePhase;
 import net.mcsproject.magicwar.game.commands.ForceStartCommand;
 import net.mcsproject.magicwar.game.commands.StatsCommand;
-import net.mcsproject.magicwar.game.listener.ingame.ItemDropListener;
+import net.mcsproject.magicwar.game.listener.ChatListener;
+import net.mcsproject.magicwar.game.listener.JoinLeaveListener;
 import org.bukkit.Bukkit;
 import org.bukkit.Difficulty;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -25,32 +26,32 @@ public class MagicWar extends JavaPlugin {
 	@Setter
 	private GamePhase gamePhase;
 
-	//private List<Listener> lobbyListeners = new Ar
-
 	public void onEnable() {
 		instance = this;
 
+		getDataFolder().mkdir();
 		getConfig().options().copyDefaults(true);
+		saveConfig();
 
 		mongodb = new MongoDB("127.0.0.1", 27017, "test");
 		mongodb.connect();
 
 		db = mongodb.getDatabase();
 
-		registerListeners();
 		registerCommands();
+		registerListener();
 
-		this.setGamePhase(GamePhase.LOBBY);
-		this.getGamePhase().getCountdown();
+		this.setGamePhase(GamePhase.INGAME);
+		this.getGamePhase().getCountdown(); // To call onInit()
 
 		Bukkit.getWorlds().get(0).setPVP(false);
 		Bukkit.getWorlds().get(0).setDifficulty(Difficulty.PEACEFUL);
 		Bukkit.getWorlds().get(0).setGameRuleValue("doDaylightCycle", "false");
 	}
 
-	private void registerListeners() {
-		//test
-		this.getServer().getPluginManager().registerEvents(new ItemDropListener(), this);
+	private void registerListener() {
+		Bukkit.getPluginManager().registerEvents(new JoinLeaveListener(), this);
+		Bukkit.getPluginManager().registerEvents(new ChatListener(), this);
 	}
 
 	private void registerCommands() {
