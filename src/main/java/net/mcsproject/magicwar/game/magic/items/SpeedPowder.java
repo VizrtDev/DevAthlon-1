@@ -31,10 +31,10 @@ public class SpeedPowder extends MagicalItem {
 		}
 
 		e.getPlayer().playSound(e.getPlayer().getLocation(), Sound.ENTITY_ARROW_HIT_PLAYER, 10, 1);
-		if (e.getPlayer().getItemOnCursor().getAmount() == 1) {
-			e.getPlayer().setItemOnCursor(null);
+		if (e.getItem().getAmount() == 1) {
+			e.getPlayer().getInventory().setItemInMainHand(null);
 		} else {
-			e.getPlayer().getItemOnCursor().setAmount(e.getPlayer().getItemOnCursor().getAmount() - 1);
+			e.getItem().setAmount(e.getItem().getAmount() - 1);
 		}
 		e.getPlayer().addPotionEffect(new org.bukkit.potion.PotionEffect(PotionEffectType.SPEED, 1200, 1));
 	}

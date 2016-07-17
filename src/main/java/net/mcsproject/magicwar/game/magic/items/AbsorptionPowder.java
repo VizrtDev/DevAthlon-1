@@ -22,7 +22,7 @@ public class AbsorptionPowder extends MagicalItem {
 
 	@EventHandler
 	public void onRightClick(PlayerInteractEvent e) {
-		if (e.getAction() != Action.RIGHT_CLICK_AIR || e.getAction() != Action.RIGHT_CLICK_BLOCK)
+		if (e.getAction() != Action.RIGHT_CLICK_AIR && e.getAction() != Action.RIGHT_CLICK_BLOCK)
 			return;
 		if (e.getItem() == null)
 			return;
@@ -33,10 +33,10 @@ public class AbsorptionPowder extends MagicalItem {
 		}
 
 		e.getPlayer().playSound(e.getPlayer().getLocation(), Sound.ENTITY_ARROW_HIT_PLAYER, 10, 1);
-		if (e.getPlayer().getItemOnCursor().getAmount() == 1) {
-			e.getPlayer().setItemOnCursor(null);
+		if (e.getItem().getAmount() == 1) {
+			e.getPlayer().getInventory().setItemInMainHand(null);
 		} else {
-			e.getPlayer().getItemOnCursor().setAmount(e.getPlayer().getItemOnCursor().getAmount() - 1);
+			e.getItem().setAmount(e.getItem().getAmount() - 1);
 		}
 		e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, 1200, 1));
 	}

@@ -8,16 +8,16 @@ import net.mcsproject.magicwar.game.listener.lobby.BlockBreakListener;
 import net.mcsproject.magicwar.game.listener.lobby.EntityDamageListener;
 import net.mcsproject.magicwar.game.listener.lobby.WeatherChangeListener;
 import net.mcsproject.magicwar.utils.ListenerBundle;
-import org.bukkit.Bukkit;
-import org.bukkit.Difficulty;
-import org.bukkit.World;
-import org.bukkit.WorldCreator;
+import org.bukkit.*;
 import org.bukkit.entity.Player;
+
+import java.util.Random;
 
 public class LobbyCountdown extends Countdown {
 
 	private ListenerBundle bundle;
 	private World magicalWorld;
+	private Random random = new Random();
 
 	public LobbyCountdown() {
 		super(60, true);
@@ -66,8 +66,15 @@ public class LobbyCountdown extends Countdown {
 
 	@Override
 	public void onEnd() {
-		Bukkit.getOnlinePlayers().forEach(p -> p.teleport(magicalWorld.getSpawnLocation()));
+		Bukkit.getOnlinePlayers().forEach(this::randomTeleport);
 		this.bundle.unregister();
+	}
+
+	private void randomTeleport(Player p) {
+		Location location = magicalWorld.getSpawnLocation().clone();
+		location.add(random.nextInt(6) - 3, 0, random.nextInt(6) - 3);
+		location.setY(magicalWorld.getHighestBlockYAt(location.getBlockX(), location.getBlockZ()));
+		p.teleport(location);
 	}
 
 

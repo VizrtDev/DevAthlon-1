@@ -33,7 +33,7 @@ public class JoinLeaveListener implements Listener {
 		e.getPlayer().sendMessage("Dieses Plugin ist nur ein proof of concept, kein vollwertiges Spiel!");
 
 		if (MagicWar.getInstance().getGamePhase() == GamePhase.LOBBY && !MagicWar.getInstance().getGamePhase().getCountdown().isStarted()
-				&& Bukkit.getOnlinePlayers().size() > 0) {
+				&& Bukkit.getOnlinePlayers().size() > 1) {
 			MagicWar.getInstance().getGamePhase().getCountdown().start();
 		}
 	}
@@ -42,7 +42,7 @@ public class JoinLeaveListener implements Listener {
 	public void onQuit(PlayerQuitEvent e) {
 		e.setQuitMessage(ChatUtils.fromConfig("playerquit").replaceAll("%p", e.getPlayer().getDisplayName()));
 
-		if (MagicWar.getInstance().getGamePhase() == GamePhase.LOBBY && MagicWar.getInstance().getGamePhase().getCountdown().isStarted() && Bukkit.getOnlinePlayers().size() == 0) {
+		if (MagicWar.getInstance().getGamePhase() == GamePhase.LOBBY && MagicWar.getInstance().getGamePhase().getCountdown().isStarted() && Bukkit.getOnlinePlayers().size() < 2) {
 			MagicWar.getInstance().getGamePhase().getCountdown().stop();
 		}
 
