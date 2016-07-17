@@ -33,7 +33,7 @@ public class PlayerDeathListener implements Listener {
 		e.getEntity().setGameMode(GameMode.SPECTATOR);
 		e.getEntity().sendMessage("Du bist nun Zuschauer"); //TODO config
 
-		if (Bukkit.getOnlinePlayers().stream().filter(p -> p.getGameMode() == GameMode.SURVIVAL).count() == 1) {
+		if (Bukkit.getOnlinePlayers().stream().filter(p -> p.getGameMode() == GameMode.SURVIVAL).count() < 2) {
 			Player winner = Bukkit.getOnlinePlayers().stream().filter(p -> p.getGameMode() == GameMode.SURVIVAL).findFirst().get();
 			/*MagicWar.getInstance().getMongodb().getConnection().getStatistic(winner.getUniqueId().toString(), s -> {
 				if (s == null) {

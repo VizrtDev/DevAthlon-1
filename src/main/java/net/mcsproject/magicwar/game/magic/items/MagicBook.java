@@ -30,7 +30,7 @@ public class MagicBook extends MagicalItem {
 
 	@EventHandler
 	public void onInteract(PlayerInteractEvent e) {
-		if (e.getAction() != Action.RIGHT_CLICK_AIR || e.getItem() == null || e.getItem().getType() != Material.ENCHANTED_BOOK)
+		if ((e.getAction() != Action.RIGHT_CLICK_AIR && e.getAction() != Action.RIGHT_CLICK_BLOCK) || e.getItem() == null || e.getItem().getType() != Material.ENCHANTED_BOOK)
 			return;
 		e.getPlayer().openInventory(this.inventory);
 	}

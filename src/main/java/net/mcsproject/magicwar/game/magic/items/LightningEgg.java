@@ -28,9 +28,11 @@ public class LightningEgg extends MagicalItem {
 	public void onRightClick(PlayerInteractEvent e) {
 		if (e.getAction() != Action.RIGHT_CLICK_AIR && e.getAction() != Action.RIGHT_CLICK_BLOCK)
 			return;
+		if (e.getItem() == null)
+			return;
 
 		Integer i = new NBTModifier(e.getItem()).getInteger("item-id");
-		if (i == null || i != 1) {
+		if (i == null || i != 4) {
 			return;
 		}
 
