@@ -20,7 +20,7 @@ public class IngameCountdown extends Countdown {
 	public void sendMessage(Player p) {
 		if (getTime() % 60 == 0) {
 			int minutes = getTime() / 60;
-			p.sendMessage("§7» §cDas Deathmatch beginnt in " + minutes + " Minute" + (minutes > 1 ? "n" : ""));
+			p.sendMessage("§7» §cDas Deathmatch beginnt in " + minutes + " Minute" + (minutes != 1 ? "n" : ""));
 		}
 	}
 
