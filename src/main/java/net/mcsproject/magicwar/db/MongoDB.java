@@ -18,13 +18,18 @@ public class MongoDB {
 	private MongoClient client;
 
 	@Getter
-	private String username, password, dbName, host;
-
+	private String username = null;
+	@Getter
+	private String password = null;
+	@Getter
+	private String dbName;
+	@Getter
+	private String host;
 	@Getter
 	private int port;
 
 	@Getter
-	private ExecutorService exec = Executors.newCachedThreadPool();
+	private ExecutorService exec;
 
 	@Getter
 	private DatabaseConnection connection;
@@ -35,6 +40,8 @@ public class MongoDB {
 		this.dbName = dbName;
 
 		this.connection = new DatabaseConnection(this);
+
+		this.exec = Executors.newCachedThreadPool();
 	}
 
 	public MongoDB(String host, int port, String dbName, String username, String password) {
@@ -44,13 +51,18 @@ public class MongoDB {
 	}
 
 	public void connect() {
+		System.out.println("Connecting...");
 		this.exec.submit(() -> {
-			if (username.isEmpty()) {
+			System.out.println("test");
+			if (username.equals(null)) {
+				System.out.println("without credentials");
 				this.client = new MongoClient(this.host, this.port);
 			} else {
+				System.out.println("with credentials");
 				this.client = new MongoClient(new ServerAddress(this.host, this.port), Collections.singletonList(MongoCredential.createCredential(this.username, this.dbName, this.password.toCharArray())));
 			}
 			this.database = this.client.getDatabase(this.dbName);
+			System.out.println("Connected to database!");
 		});
 	}
 

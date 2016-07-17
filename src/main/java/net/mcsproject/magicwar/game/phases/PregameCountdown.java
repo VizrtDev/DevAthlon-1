@@ -1,5 +1,6 @@
 package net.mcsproject.magicwar.game.phases;
 
+import net.mcsproject.magicwar.MagicWar;
 import net.mcsproject.magicwar.game.Countdown;
 import net.mcsproject.magicwar.game.listener.lobby.BlockBreakListener;
 import net.mcsproject.magicwar.game.listener.lobby.EntityDamageListener;
@@ -37,15 +38,16 @@ public class PregameCountdown extends Countdown {
 	@Override
 	public void onStart() {
 		MagicBook book = new MagicBook(MagicalItems.getInstance().getItemMap());
+		Bukkit.getPluginManager().registerEvents(book, MagicWar.getInstance());
 
 		Bukkit.broadcastMessage(ChatUtils.fromConfig("gamestart"));
 		Bukkit.getOnlinePlayers().forEach(p -> {
 			PlayerInventory inv = p.getInventory();
-			inv.setItem(0, new ItemStack(Material.WOOD_SWORD));
+			inv.setItem(0, new ItemModifier(new ItemStack(Material.WOOD_SWORD)).valueLore().get());
 			inv.setItem(7, book.getItem());
-			inv.setItem(8, new ItemModifier(new ItemStack(Material.CAULDRON_ITEM)).name("Zauberkessel").get());
-			inv.setItem(2, new ItemStack(Material.WOOD, 20));
-			inv.setItem(1, new ItemStack(Material.IRON_PICKAXE));
+			inv.setItem(8, new ItemModifier(new ItemStack(Material.CAULDRON_ITEM)).name("Zauberkessel").valueLore().get());
+			inv.setItem(2, new ItemModifier(new ItemStack(Material.WOOD, 20)).valueLore().get());
+			inv.setItem(1, new ItemModifier(new ItemStack(Material.IRON_PICKAXE)).valueLore().get());
 
 			inv.setArmorContents(new ItemStack[]{
 					new ItemStack(Material.LEATHER_BOOTS),

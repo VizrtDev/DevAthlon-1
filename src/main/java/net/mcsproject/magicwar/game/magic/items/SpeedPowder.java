@@ -14,7 +14,7 @@ import org.bukkit.potion.PotionEffectType;
 public class SpeedPowder extends MagicalItem {
 
 	public SpeedPowder() {
-		super(new NBTModifier(new ItemModifier(new ItemStack(Material.INK_SACK, 1, (short) DyeColor.YELLOW.getDyeData()))
+		super(new NBTModifier(new ItemModifier(new ItemStack(Material.INK_SACK, 1, (short) DyeColor.LIGHT_BLUE.getDyeData()))
 				.name("§bSpeed-Powder").lore("Wert§7: §e55").get()).setInteger("item-id", 2).modify());
 	}
 

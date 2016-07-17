@@ -27,7 +27,8 @@ public class ItemDropListener implements Listener {
 
 							MagicCauldron.getInstance().addValue(e.getItemDrop().getLocation().getBlock().getLocation(),
 									ItemValues.valueOf(e.getItemDrop().getItemStack().getType().toString()).getValue());
-
+							e.getPlayer().sendMessage("§aAktueller Wert§7: §e" + MagicCauldron.getInstance().getValue(e.getItemDrop().getLocation().getBlock().getLocation()));
+							
 							e.getItemDrop().remove();
 						}
 					}

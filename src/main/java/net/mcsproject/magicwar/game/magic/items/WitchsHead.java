@@ -7,18 +7,20 @@ import org.bukkit.Sound;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.WitherSkull;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
 public class WitchsHead extends MagicalItem {
 
 	public WitchsHead() {
-		super(new ItemModifier(new ItemStack(Material.SKULL_ITEM)).name("§cWitch's Head").lore("Schießt einen Witherkopf").get());
+		super(new ItemModifier(new ItemStack(Material.SKULL_ITEM)).name("§cWitch's Head").lore("Schießt einen Witherkopf", "Wert§7: §e75").get());
 	}
 
 	@EventHandler
 	public void onUse(PlayerInteractEvent e) {
-		if (e.getItem() == null) return;
+		if (e.getAction() != Action.RIGHT_CLICK_AIR || e.getItem() == null || e.getItem().getType() != Material.SKULL)
+			return;
 		if (e.getItem().getItemMeta().getDisplayName().equals("§cWitch's Head")) {
 			WitherSkull skull = (WitherSkull) e.getPlayer().getWorld().spawnEntity(e.getPlayer().getLocation(), EntityType.WITHER_SKULL);
 			skull.setShooter(e.getPlayer());

@@ -59,6 +59,13 @@ public abstract class Countdown {
 		}, 0L, 20L);
 	}
 
+	public void stop() {
+		if (this.task != null) {
+			this.task.cancel();
+			this.task = null;
+		}
+	}
+
 	public abstract void sendMessage();
 
 	public abstract void onInit();

@@ -24,10 +24,16 @@ public class JoinLeaveListener implements Listener {
 
 		e.getPlayer().teleport(Bukkit.getWorlds().get(0).getSpawnLocation());
 
+		/*DatabasePlayer databasePlayer = new DatabasePlayer();
+		databasePlayer.setUuid(e.getPlayer().getUniqueId().toString());
+		databasePlayer.setLastName(e.getPlayer().getName());
+		databasePlayer.setLastNameLowercase(e.getPlayer().getName().toLowerCase());
+		MagicWar.getInstance().getMongodb().getConnection().updatePlayer(databasePlayer);*/
+
 		e.getPlayer().sendMessage("Dieses Plugin ist nur ein proof of concept, kein vollwertiges Spiel!");
 
 		if (MagicWar.getInstance().getGamePhase() == GamePhase.LOBBY && !MagicWar.getInstance().getGamePhase().getCountdown().isStarted()
-				&& Bukkit.getOnlinePlayers().size() > 1) {
+				&& Bukkit.getOnlinePlayers().size() > 0) {
 			MagicWar.getInstance().getGamePhase().getCountdown().start();
 		}
 	}
