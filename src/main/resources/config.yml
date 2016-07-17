@@ -6,14 +6,12 @@ db:
 messages:
   chatformat: "&7%s &8⇒ &7%s"
   prefix: "&7[&5Magic&6Wars&7] "
-  playerjoin: "&a⇨ &7%p &ajoined the game"
-  playerquit: "&c⇦ &7%p &cleft the game"
-  gamestart: "&eGame &7starts in &e%t &7Seconds"
-  deathmatchstart: "&eDeathmatch &7begins in &e%t &7seconds"
-  playerdeath: "&c%p &7was killed by &a%k"
-  gamestart: "&aLet the games begin!"
-  peaceend: "&cWarmup ended now."
-  deathmatchstart: "&aThe deathmatch begins now."
-  winner: "&c%p &7won the game"
+  playerjoin: "&a⇨ &7%p &ahat das Spiel betreten"
+  playerquit: "&c⇦ &7%p &chat das Spiel verlassen"
+  playerdeath: "&c%p &7wurde getötet von &a%k"
+  gamestart: "&aLasst die Spiele beginnen!"
+  peaceend: "&cWarmup-Phase ist nun beendet."
+  deathmatchstart: "&aDas Deathmatch beginnt nun."
+  winner: "&c%p &7hat das Spiel gewonnen"
 minplayers: 2
 worldbordersize: 160

@@ -22,7 +22,7 @@ public class RegenerationPowder extends MagicalItem {
 
 	@EventHandler
 	public void onRightClick(PlayerInteractEvent e) {
-		if (e.getAction() != Action.RIGHT_CLICK_AIR || e.getAction() != Action.RIGHT_CLICK_BLOCK)
+		if (e.getAction() != Action.RIGHT_CLICK_AIR && e.getAction() != Action.RIGHT_CLICK_BLOCK)
 			return;
 
 		Integer i = new NBTModifier(e.getItem()).getInteger("item-id");

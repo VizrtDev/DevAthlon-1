@@ -12,6 +12,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Difficulty;
 import org.bukkit.World;
 import org.bukkit.WorldCreator;
+import org.bukkit.entity.Player;
 
 public class LobbyCountdown extends Countdown {
 
@@ -23,7 +24,14 @@ public class LobbyCountdown extends Countdown {
 	}
 
 	@Override
-	public void sendMessage() {
+	public void sendMessage(Player p) {
+		if (getTime() % 20 == 0 || getTime() <= 10) {
+			p.sendMessage("§7» §aDas Spiel startet in " + getTime() + " Sekunden!");
+		}
+	}
+
+	@Override
+	public void onTick() {
 		if (this.getTime() == 15) {
 			WorldCreator wc = new WorldCreator("MagicalWorld");
 			wc.environment(World.Environment.NORMAL);
@@ -37,7 +45,6 @@ public class LobbyCountdown extends Countdown {
 			magicalWorld.setAutoSave(false);
 			magicalWorld.getWorldBorder().setSize(MagicWar.getInstance().getConfig().getInt("worldbordersize"));
 		}
-		// TODO Messages @ilou
 	}
 
 	@Override

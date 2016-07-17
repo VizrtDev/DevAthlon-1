@@ -13,6 +13,7 @@ import net.mcsproject.magicwar.utils.ItemModifier;
 import net.mcsproject.magicwar.utils.ListenerBundle;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
@@ -25,8 +26,13 @@ public class PregameCountdown extends Countdown {
 	private ListenerBundle bundle;
 
 	@Override
-	public void sendMessage() {
-		// TODO Messages @ilou
+	public void sendMessage(Player p) {
+		p.sendMessage("§7» §aDas Spiel beginnt in " + getTime() + " Sekunden");
+	}
+
+	@Override
+	public void onTick() {
+
 	}
 
 	@Override

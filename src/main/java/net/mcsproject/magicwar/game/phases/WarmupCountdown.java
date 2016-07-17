@@ -9,6 +9,7 @@ import net.mcsproject.magicwar.game.listener.lobby.EntityDamageListener;
 import net.mcsproject.magicwar.utils.ChatUtils;
 import net.mcsproject.magicwar.utils.ListenerBundle;
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 
 public class WarmupCountdown extends Countdown {
 
@@ -19,7 +20,15 @@ public class WarmupCountdown extends Countdown {
 	}
 
 	@Override
-	public void sendMessage() {
+	public void sendMessage(Player p) {
+		if (getTime() % 60 == 0 && getTime() != 0) {
+			int minutes = getTime() / 60;
+			p.sendMessage("§7» §cDie Warmup-Phase endet in " + minutes + " Minute" + (minutes > 1 ? "n" : ""));
+		}
+	}
+
+	@Override
+	public void onTick() {
 
 	}
 

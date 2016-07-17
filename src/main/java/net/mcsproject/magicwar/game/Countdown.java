@@ -3,6 +3,7 @@ package net.mcsproject.magicwar.game;
 import lombok.Getter;
 import net.mcsproject.magicwar.MagicWar;
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitTask;
 
 public abstract class Countdown {
@@ -36,7 +37,7 @@ public abstract class Countdown {
 				Countdown.this.task.cancel();
 				this.onEnd();
 				int next = MagicWar.getInstance().getGamePhase().ordinal() + 1;
-				if (next == GamePhase.values().length - 1) {
+				if (next == GamePhase.values().length) {
 					Bukkit.getServer().shutdown();
 					return;
 				}
@@ -46,14 +47,15 @@ public abstract class Countdown {
 				return;
 			}
 
-			if (enableXP) {
-				Bukkit.getOnlinePlayers().forEach(p -> {
+			Bukkit.getOnlinePlayers().forEach(p -> {
+				if (enableXP) {
 					p.setLevel(time);
 					p.setExp((float) time / startTime);
-				});
-			}
+				}
+				this.sendMessage(p);
+			});
 
-			this.sendMessage();
+			this.onTick();
 
 			time--;
 		}, 0L, 20L);
@@ -66,7 +68,9 @@ public abstract class Countdown {
 		}
 	}
 
-	public abstract void sendMessage();
+	public abstract void sendMessage(Player p);
+
+	public abstract void onTick();
 
 	public abstract void onInit();
 

@@ -42,6 +42,10 @@ public class JoinLeaveListener implements Listener {
 	public void onQuit(PlayerQuitEvent e) {
 		e.setQuitMessage(ChatUtils.fromConfig("playerquit").replaceAll("%p", e.getPlayer().getDisplayName()));
 
+		if (MagicWar.getInstance().getGamePhase() == GamePhase.LOBBY && MagicWar.getInstance().getGamePhase().getCountdown().isStarted() && Bukkit.getOnlinePlayers().size() == 0) {
+			MagicWar.getInstance().getGamePhase().getCountdown().stop();
+		}
+
 		if (MagicWar.getInstance().getGamePhase() != GamePhase.LOBBY && Bukkit.getOnlinePlayers().stream().filter(p -> p.getGameMode() == GameMode.SURVIVAL).count() == 1) {
 			Player winner = Bukkit.getOnlinePlayers().stream().filter(p -> p.getGameMode() == GameMode.SURVIVAL).findFirst().get();
 			Bukkit.broadcastMessage(ChatUtils.fromConfig("winner").replaceAll("%p", winner.getDisplayName()));

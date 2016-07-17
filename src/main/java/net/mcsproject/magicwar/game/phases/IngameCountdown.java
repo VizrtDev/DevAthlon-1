@@ -6,6 +6,7 @@ import net.mcsproject.magicwar.game.listener.ingame.InteractListener;
 import net.mcsproject.magicwar.game.listener.ingame.ItemDropListener;
 import net.mcsproject.magicwar.game.listener.ingame.PlayerDeathListener;
 import net.mcsproject.magicwar.utils.ListenerBundle;
+import org.bukkit.entity.Player;
 
 public class IngameCountdown extends Countdown {
 
@@ -16,8 +17,15 @@ public class IngameCountdown extends Countdown {
 	}
 
 	@Override
-	public void sendMessage() {
-		// TODO Messages @ilou
+	public void sendMessage(Player p) {
+		if (getTime() % 60 == 0) {
+			int minutes = getTime() / 60;
+			p.sendMessage("§7» §cDas Deathmatch beginnt in " + minutes + " Minute" + (minutes > 1 ? "n" : ""));
+		}
+	}
+
+	@Override
+	public void onTick() {
 	}
 
 	@Override

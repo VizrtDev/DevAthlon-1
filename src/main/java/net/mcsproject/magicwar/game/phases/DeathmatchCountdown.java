@@ -3,6 +3,7 @@ package net.mcsproject.magicwar.game.phases;
 import net.mcsproject.magicwar.game.Countdown;
 import net.mcsproject.magicwar.utils.ChatUtils;
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 
 public class DeathmatchCountdown extends Countdown {
 
@@ -11,8 +12,15 @@ public class DeathmatchCountdown extends Countdown {
 	}
 
 	@Override
-	public void sendMessage() {
-		// TODO Messages @ilou
+	public void sendMessage(Player p) {
+		if (getTime() % 60 == 0 || getTime() <= 10) {
+			p.sendMessage("§7» §cDas Deathmatch endet in " + getTime() + " Sekunden");
+		}
+	}
+
+	@Override
+	public void onTick() {
+
 	}
 
 	@Override

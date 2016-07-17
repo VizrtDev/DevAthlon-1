@@ -2,20 +2,19 @@ package net.mcsproject.magicwar.game.magic;
 
 import lombok.Getter;
 
-// TODO Set values @ilou
 public enum ItemValues {
 	STONE(5),
 	GRASS(5),
 	DIRT(5),
-	COBBLESTONE(2),
-	WOOD(4),
-	SAPLING(4),
+	COBBLESTONE(5),
+	WOOD(5),
+	SAPLING(5),
 	BEDROCK(99),
-	SAND(6),
-	GRAVEL(12),
+	SAND(5),
+	GRAVEL(10),
 	GOLD_ORE(15),
-	IRON_ORE(18),
-	COAL_ORE(22),
+	IRON_ORE(20),
+	COAL_ORE(25),
 	LOG(25),
 	LEAVES(25),
 	SPONGE(25),

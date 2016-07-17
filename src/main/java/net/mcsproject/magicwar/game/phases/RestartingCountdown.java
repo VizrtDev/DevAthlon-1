@@ -2,6 +2,7 @@ package net.mcsproject.magicwar.game.phases;
 
 import net.mcsproject.magicwar.game.Countdown;
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 
 public class RestartingCountdown extends Countdown {
 
@@ -10,8 +11,15 @@ public class RestartingCountdown extends Countdown {
 	}
 
 	@Override
-	public void sendMessage() {
-		// TODO Messages @ilou
+	public void sendMessage(Player p) {
+		if (getTime() % 5 == 0 || getTime() <= 5) {
+			p.sendMessage("§7» §aDer Server startet neu in " + getTime() + " Sekunden");
+		}
+	}
+
+	@Override
+	public void onTick() {
+
 	}
 
 	@Override
